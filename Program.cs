@@ -43,22 +43,28 @@ namespace Algorytm_queue_6
         }
 
         //додавання елементів
-        static void add_elem(double[,] d, int i, int j, double elem)
+        static void add_elem1(double[,] d, int i, int j, double elem)
         {
             d[i, j] = elem;
         }
 
-        //прибрати елемент
-        static void delet_elem(double[,] d, int i, int j)
+        static void add_elem2(double[,] d, int i, int j, double elem)
         {
-            d[i, j] = 0;
+            d[i, j] = elem;
         }
+        //прибрати елемент
+        /* static void delet_elem(double[,] d, int i, int j)
+         {
+             d[i, j] = 0;
+         }*/
 
         //переміщення елемента
         static void change_elem(double[,] d, int i, int j, int a, int b)
         {
-            d[a, b] = d[i,j];
             // команда видалення 
+            double new_change = d[a, b];
+            d[a, b] = d[i, j];
+            d[i,j] = new_change;
         }
 
         // додавання елементів між собою
@@ -83,6 +89,39 @@ namespace Algorytm_queue_6
             Q.Enqueue(3);
             Q.Enqueue(4);
             Q.Enqueue(5);
+
+            bool p = true;
+            while(p)
+            {
+                Console.WriteLine("0: вихід з програми");
+                Console.WriteLine("1: Сформувати чергу");
+                int menu = Convert.ToInt32( Console.ReadLine());
+
+                switch (menu)
+                {
+                    case 0:
+                        p = false;
+                        break;
+                    case 1:
+                        Console.WriteLine("Введіть чегру:");
+                        Console.WriteLine("1. Виводить матрицю на екран(на початку вона буде нульова)");
+                        Console.WriteLine("2. Додає один елемент в матрицю");
+                        Console.WriteLine("3. Додає другий елемент в матрицю");
+                        Console.WriteLine("4. Переміщення елемента на інші координати");
+                        Console.WriteLine("5. Виводить суму елементів");
+                        Console.WriteLine("6. Виводить добуток елементів");
+                        Console.WriteLine("7. Якщо елемент закінчується 2 - ділить на 2 ");
+                        Console.WriteLine("8. Від'ємні елементи замінює на 0");
+                        Console.WriteLine("9. Пошук мінімального елемента");
+                        Console.WriteLine("10.Пошук максимального елемента");
+
+
+                        break;
+                    default:
+                        Console.WriteLine("Помилка при введені");
+                        break;
+                }
+            }
             while (Q.Count > 0)
             {
                 switch (Q.Dequeue())
@@ -91,19 +130,13 @@ namespace Algorytm_queue_6
                         print(d, 3, 3);
                         break;
                     case 2:
-                            double elem;
-                            int x, y;
-                            Console.Write("Введіть елемент: ");
-                            elem = Convert.ToDouble(Console.ReadLine());
-                            Console.Write("Введіть координади елемента (x): ");
-                            x = Convert.ToInt32(Console.ReadLine());
-                            Console.Write("Введіть координади елемента (y): ");
-                            y = Convert.ToInt32(Console.ReadLine());
-                            add_elem(d, x, y, elem);
+                            double elem=78;
+                            int x=0, y=2;
+                            add_elem1(d, x, y, elem);
                             break;
 
                     case 3:
-                        string choice2;
+                        /*string choice2;
 
                         Console.WriteLine("Хочете прибрати елемент? ");
                         choice2 = Console.ReadLine();
@@ -117,7 +150,9 @@ namespace Algorytm_queue_6
                             break;
                         }
                         else 
-                            break;
+                            break;*/
+
+
                     case 4:
                         int x1, y1, x2, y2;
                         Console.WriteLine("Переміщення елемента\t");
@@ -135,7 +170,7 @@ namespace Algorytm_queue_6
                         break;
                     case 5:
                         int x3,y3;
-                        Console.WriteLine("Сума елементів");
+                        /*Console.WriteLine("Сума елементів");
                         Console.Write("Введіть координади елемента 1 (x): ");
                         x1 = Convert.ToInt32(Console.ReadLine());
                         Console.Write("Введіть координади елемента 1 (y): ");
@@ -147,7 +182,7 @@ namespace Algorytm_queue_6
                         Console.Write("Введіть координати елемента 3 (x): ");
                         x3 = Convert.ToInt32(Console.ReadLine());
                         Console.Write("Введіть координати елемента 3 (y): ");
-                        y3 = Convert.ToInt32(Console.ReadLine());
+                        y3 = Convert.ToInt32(Console.ReadLine());*/
 
                         Sum(d, x1, y1, x2, y2, x3, y3);
                         print(d, 3, 3);
@@ -162,4 +197,10 @@ namespace Algorytm_queue_6
 
 /*
  дописати 5 функцій для черги, доробити меню
+ */
+
+/*
+ *створення циклу меню (while)
+ *запис черги користувача 
+ *запуск черги 
  */
